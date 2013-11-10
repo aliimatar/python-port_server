@@ -3,11 +3,16 @@
 import socket
 import sys
 
+try:
+    port = int(sys.argv[1])
+except:
+    port = 10000
+
 # Create a TCP/IP socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # Bind the socket to the address given on the command line
-server_address = ('', 10000)
+server_address = ('', port)
 sock.bind(server_address)
 print >>sys.stderr, 'starting up on %s port %s' % sock.getsockname()
 sock.listen(1)
